@@ -15,6 +15,8 @@
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#links">Links</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -75,10 +77,83 @@
   </section>
 
 
+  <section id="blog" class="section">
+    <h2 class="section-title">Blog</h2>
+
+    <article class="blog-post">
+      <h3>How I Reduced the Execution Time of My Mail Extractor</h3>
+      <p class="blog-meta">By <a href="https://www.linkedin.com/in/bhavesh-bhagoria-554713372/">Bhavesh Bhagoria</a> · July 22, 2026</p>
+
+      <h4>1. Same-domain filtering</h4>
+      <p>
+        While crawling through a website, the crawler could pick up links to external sites
+        such as Wikipedia, etc., which would affect the execution time — and could also give
+        wrong output. I used Python's <code>urllib.parse.urlparse</code>:
+      </p>
+      <pre><code>from urllib.parse import urlparse
+
+def is_same_domain(base_url, target_url):
+    return urlparse(base_url).netloc == urlparse(target_url).netloc</code></pre>
+      <p>
+        <code>urlparse</code> splits a URL into pieces — scheme, netloc (hostname), path, etc.
+        I compared the netloc of the current URL, before putting it in the queue, with the
+        target domain (of the link provided by the user). This solved a small-looking problem,
+        but it improved the efficiency significantly by stopping the crawler from working
+        unnecessarily.
+      </p>
+
+      <h4>2. Using asyncio and aiohttp</h4>
+      <p>
+        In I/O-bound operations like this, execution time is high due to waiting on network
+        responses. This time can be saved if we handle network responses asynchronously.
+        While performing asynchronous tasks, we cannot use <code>requests</code> to handle
+        network responses, because it uses blocking sockets — and for asynchronous tasks we
+        need non-blocking sockets instead. I also used a single <code>aiohttp.ClientSession()</code>
+        for every request, which saved time on DNS lookups, TCP handshakes, etc. (keep-alive).
+      </p>
+
+      <h4>3. Using 5 workers, asyncio.Lock(), and a set instead of a list</h4>
+      <p>
+        I used 5 workers to concurrently pull URLs from a single shared queue and crawl them
+        asynchronously. To avoid duplicate work, I used two sets:
+      </p>
+      <ul>
+        <li>
+          <strong>seen</strong> — checked when a new link is discovered on a page. Before
+          queuing it, I check if it's already in <code>seen</code>, and if not, add it and
+          queue it. This stops the same link from being queued twice if multiple pages link
+          to it.
+        </li>
+        <li>
+          <strong>visited</strong> — checked when a worker pulls a URL off the queue, right
+          before fetching it. This stops two workers from fetching the same page twice.
+        </li>
+      </ul>
+      <p>
+        I used sets instead of lists for both, because workers need to run this "have I
+        seen/visited this?" check on every single link throughout the crawl. A list would need
+        to scan every existing entry (O(N), getting slower as it grows), whereas a set answers
+        the same check in roughly constant time (O(1)), using hashing to jump straight to
+        where the item would be instead of scanning.
+      </p>
+    </article>
+  </section>
+
+
+  <section id="links" class="section">
+    <h2 class="section-title">Links</h2>
+    <ul class="external-links">
+      <li>LeetCode: <a href="https://leetcode.com/u/bhavesh_31/">leetcode.com/bhavesh-bhagoria</a></li>
+      <li>Medium: <a href="https://medium.com/@bhaveshbhagoria940">medium.com/bhavesh-bhagoria</a></li>
+      <li>GitHub: <a href="https://github.com/bhavesh-bhagoria">github.com/bhavesh-bhagoria</a></li>
+    </ul>
+  </section>
+
+
   <section id="contact" class="section">
     <h2 class="section-title">Contact Me</h2>
     <p>Email: bhaveshbhagoria940@gmail.com</p>
-    <p>GitHub: <a href="https://github.com/bhavesh-bhagoria">github.com/bhavesh-bhagoria</a></p>
+    
     <p>LinkedIn: <a href="https://www.linkedin.com/in/bhavesh-bhagoria-554713372/">linkedin.com/in/bhavesh-bhagoria-554713372</a></p>
   </section>
 

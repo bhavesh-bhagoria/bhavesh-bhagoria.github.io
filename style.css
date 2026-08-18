@@ -1,4 +1,3 @@
-/* ===== Basic Reset ===== */
 * {
   margin: 0;
   padding: 0;
@@ -12,7 +11,6 @@ body {
   line-height: 1.6;
 }
 
-/* ===== Header / Navbar ===== */
 header {
   display: flex;
   justify-content: space-between;
@@ -44,7 +42,6 @@ header {
   text-decoration: underline;
 }
 
-/* ===== Hero Section ===== */
 .hero {
   text-align: center;
   padding: 80px 20px;
@@ -76,7 +73,6 @@ header {
   color: #000000;
 }
 
-/* ===== General Section Styling ===== */
 .section {
   padding: 60px 40px;
   border-bottom: 2px solid #000000;
@@ -90,7 +86,6 @@ header {
   padding-bottom: 5px;
 }
 
-/* ===== Skills Section ===== */
 .skills-list {
   list-style: none;
   display: flex;
@@ -104,7 +99,6 @@ header {
   font-weight: bold;
 }
 
-/* ===== Projects Section ===== */
 .project-card {
   border: 2px solid #000000;
   padding: 20px;
@@ -135,19 +129,101 @@ header {
   color: #000000;
 }
 
-/* ===== Contact Section ===== */
+.blog-post {
+  border: 2px solid #000000;
+  padding: 30px;
+  margin-bottom: 25px;
+}
+
+.blog-post h3 {
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.blog-meta {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+.blog-meta a {
+  color: #000000;
+}
+
+.blog-post h4 {
+  font-size: 18px;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #000000;
+  display: inline-block;
+  padding-bottom: 3px;
+}
+
+.blog-post p {
+  margin-bottom: 15px;
+}
+
+.blog-post ul {
+  list-style: disc;
+  margin: 0 0 15px 25px;
+}
+
+.blog-post li {
+  margin-bottom: 10px;
+}
+
+.blog-post code {
+  font-family: "Courier New", monospace;
+  background-color: #f0f0f0;
+  border: 1px solid #000000;
+  padding: 2px 6px;
+  font-size: 14px;
+}
+
+.blog-post pre {
+  border: 2px solid #000000;
+  background-color: #f0f0f0;
+  padding: 15px;
+  margin-bottom: 15px;
+  overflow-x: auto;
+}
+
+.blog-post pre code {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+
+.external-links {
+  list-style: none;
+}
+
+.external-links li {
+  border: 2px solid #000000;
+  padding: 12px 18px;
+  margin-bottom: 12px;
+  font-weight: bold;
+}
+
+.external-links a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.external-links a:hover {
+  text-decoration: underline;
+}
+
 #contact a {
   color: #000000;
   font-weight: bold;
 }
 
-/* ===== Footer ===== */
 footer {
   text-align: center;
   padding: 20px;
 }
 
-/* ===== Responsive Design ===== */
 @media (max-width: 600px) {
   header {
     flex-direction: column;
