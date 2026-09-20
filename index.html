@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -6,20 +7,25 @@
   <title>Bhavesh Bhagoria | Portfolio</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
   <header>
     <h1 class="logo">Bhavesh Bhagoria</h1>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#links">Links</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+
+
+<nav>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#links">Links</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+
   </header>
 
   <section class="hero">
@@ -28,7 +34,6 @@
     <a href="#projects" class="btn">View My Work</a>
   </section>
 
-  
   <section id="about" class="section">
     <h2 class="section-title">About Me</h2>
     <p>
@@ -39,124 +44,171 @@
     </p>
   </section>
 
-
   <section id="skills" class="section">
     <h2 class="section-title">Skills</h2>
-    <ul class="skills-list">
-      <li>Python</li>
-      <li>FastAPI</li>
-      <li>Flask</li>
-      <li>SQL</li>
-      <li>HTML &amp; CSS</li>
-      <li>Git &amp; GitHub</li>
-      <li>Problem Solving</li>
-    </ul>
+
+
+<ul class="skills-list">
+  <li>Python</li>
+  <li>FastAPI</li>
+  <li>Flask</li>
+  <li>SQL</li>
+  <li>HTML &amp; CSS</li>
+  <li>Git &amp; GitHub</li>
+  <li>Problem Solving</li>
+</ul>
+
+
   </section>
 
   <section id="projects" class="section">
     <h2 class="section-title">Projects</h2>
 
-    <div class="project-card">
-      <h3>Mail Extractor</h3>
-      <p>Async Python email crawler using `asyncio`/`aiohttp` with a 5-worker shared queue, 
-        same-domain filtering, and regex-based extraction with false-positive cleaning. Built 
-        to learn concurrency; ~3x faster than a synchronous version.</p>
-      <p><strong>Tech Used:</strong> Python, FastAPI</p>
-      <a href="https://github.com/bhavesh-bhagoria/mail_extractor" class="btn-small">View on GitHub</a>
-    </div>
 
-    <div class="project-card">
-      <h3>Newspaper Billing Management</h3>
-      <p>Newspaper subscription billing system built with Flask, using separate admin and 
-        customer portals with session-based authentication and role-based authorization, 
-        backed by MySQL. Handles subscription management and automated billing with proration 
-        logic across linked database tables.</p>
-      <p><strong>Tech Used:</strong> Python, Flask</p>
-      <a href="https://github.com/bhavesh-bhagoria/NEWS-PAPER-MANAGMENT" class="btn-small">View on GitHub</a>
-    </div>
+<div class="project-card">
+  <h3>Mail Extractor</h3>
+
+  <p>
+    Built an asynchronous Python email crawler for extracting email
+    addresses from websites. Implemented asyncio and aiohttp for
+    concurrent network requests using a shared queue with 5 workers.
+  </p>
+
+  <p>
+    Added same-domain filtering to avoid unnecessary external crawling
+    and used sets to prevent duplicate URLs from being processed.
+    Implemented regex-based email extraction with false-positive
+    cleaning and validation.
+  </p>
+
+  <p>
+    The asynchronous implementation achieved approximately 3x faster
+    execution compared to the synchronous version.
+  </p>
+
+  <p>
+    <strong>Tech Used:</strong>
+    Python, FastAPI, asyncio, aiohttp
+  </p>
+
+  <a href="https://github.com/bhavesh-bhagoria/mail_extractor" class="btn-small">
+    View on GitHub
+  </a>
+</div>
+
+<div class="project-card">
+  <h3>Newspaper Billing Management</h3>
+
+  <p>
+    Built a full-stack newspaper subscription and billing management
+    system using Flask and MySQL for a newspaper agency.
+  </p>
+
+  <p>
+    Developed separate admin and customer portals with session-based
+    authentication and role-based authorization. Implemented customer
+    and newspaper subscription management, agent-wise customer handling,
+    and pause and resume functionality.
+  </p>
+
+  <p>
+    Implemented monthly bill generation and proration logic to calculate
+    billing based on subscription periods and paused days. Designed
+    linked database tables for customers, subscriptions, pauses, bills,
+    and payment status.
+  </p>
+
+  <p>
+    <strong>Tech Used:</strong>
+    Python, Flask, MySQL, HTML, CSS
+  </p>
+
+  <a href="https://github.com/bhavesh-bhagoria/NEWS-PAPER-MANAGMENT" class="btn-small">
+    View on GitHub
+  </a>
+</div>
+
+
   </section>
-
 
   <section id="blog" class="section">
-    <h2 class="section-title">Blog</h2>
+    <h2 class="section-title">Blogs</h2>
 
-    <article class="blog-post">
-      <h3>How I Reduced the Execution Time of My Mail Extractor</h3>
-      <p class="blog-meta">By <a href="https://medium.com/@bhaveshbhagoria940/how-i-reduced-the-execution-time-of-my-mail-extractor-412ddf121580">Bhavesh Bhagoria</a> · July 22, 2026</p>
 
-      <h4>1. Same-domain filtering</h4>
-      <p>
-        While crawling through a website, the crawler could pick up links to external sites
-        such as Wikipedia, etc., which would affect the execution time — and could also give
-        wrong output. I used Python's <code>urllib.parse.urlparse</code>:
-      </p>
-      <pre><code>from urllib.parse import urlparse
+<ul class="external-links">
 
-def is_same_domain(base_url, target_url):
-    return urlparse(base_url).netloc == urlparse(target_url).netloc</code></pre>
-      <p>
-        <code>urlparse</code> splits a URL into pieces — scheme, netloc (hostname), path, etc.
-        I compared the netloc of the current URL, before putting it in the queue, with the
-        target domain (of the link provided by the user). This solved a small-looking problem,
-        but it improved the efficiency significantly by stopping the crawler from working
-        unnecessarily.
-      </p>
+  <li>
+    <a href="https://medium.com/@bhaveshbhagoria940/how-can-ipv4-and-ipv6-systems-communicate-with-each-other-e4dc16dd32c5?sharedUserId=bhaveshbhagoria940">
+      How Can IPv4 and IPv6 Systems Communicate With Each Other?
+    </a>
+  </li>
 
-      <h4>2. Using asyncio and aiohttp</h4>
-      <p>
-        In I/O-bound operations like this, execution time is high due to waiting on network
-        responses. This time can be saved if we handle network responses asynchronously.
-        While performing asynchronous tasks, we cannot use <code>requests</code> to handle
-        network responses, because it uses blocking sockets — and for asynchronous tasks we
-        need non-blocking sockets instead. I also used a single <code>aiohttp.ClientSession()</code>
-        for every request, which saved time on DNS lookups, TCP handshakes, etc. (keep-alive).
-      </p>
+  <li>
+    <a href="https://medium.com/@bhaveshbhagoria940/why-python-lists-arent-as-simple-as-they-look-3cf07745cd30?sharedUserId=bhaveshbhagoria940">
+      Why Python Lists Aren't as Simple as They Look
+    </a>
+  </li>
 
-      <h4>3. Using 5 workers, asyncio.Lock(), and a set instead of a list</h4>
-      <p>
-        I used 5 workers to concurrently pull URLs from a single shared queue and crawl them
-        asynchronously. To avoid duplicate work, I used two sets:
-      </p>
-      <ul>
-        <li>
-          <strong>seen</strong> — checked when a new link is discovered on a page. Before
-          queuing it, I check if it's already in <code>seen</code>, and if not, add it and
-          queue it. This stops the same link from being queued twice if multiple pages link
-          to it.
-        </li>
-        <li>
-          <strong>visited</strong> — checked when a worker pulls a URL off the queue, right
-          before fetching it. This stops two workers from fetching the same page twice.
-        </li>
-      </ul>
-      <p>
-        I used sets instead of lists for both, because workers need to run this "have I
-        seen/visited this?" check on every single link throughout the crawl. A list would need
-        to scan every existing entry (O(N), getting slower as it grows), whereas a set answers
-        the same check in roughly constant time (O(1)), using hashing to jump straight to
-        where the item would be instead of scanning.
-      </p>
-    </article>
+  <li>
+    <a href="https://medium.com/@bhaveshbhagoria940/how-i-reduced-the-execution-time-of-my-mail-extractor-412ddf121580?sharedUserId=bhaveshbhagoria940">
+      How I Reduced the Execution Time of My Mail Extractor
+    </a>
+  </li>
+
+</ul>
+
+
   </section>
-
 
   <section id="links" class="section">
     <h2 class="section-title">Links</h2>
-    <ul class="external-links">
-      <li>LeetCode: <a href="https://leetcode.com/u/bhavesh_31/">leetcode.com/bhavesh-bhagoria</a></li>
-      <li>Medium: <a href="https://medium.com/@bhaveshbhagoria940">medium.com/bhavesh-bhagoria</a></li>
-      <li>GitHub: <a href="https://github.com/bhavesh-bhagoria">github.com/bhavesh-bhagoria</a></li>
-    </ul>
-  </section>
 
+
+<ul class="external-links">
+
+  <li>
+    LeetCode:
+    <a href="https://leetcode.com/u/bhavesh_31/">
+      leetcode.com/bhavesh-bhagoria
+    </a>
+  </li>
+
+  <li>
+    Medium:
+    <a href="https://medium.com/@bhaveshbhagoria940">
+      medium.com/bhavesh-bhagoria
+    </a>
+  </li>
+
+  <li>
+    GitHub:
+    <a href="https://github.com/bhavesh-bhagoria">
+      github.com/bhavesh-bhagoria
+    </a>
+  </li>
+
+</ul>
+
+
+  </section>
 
   <section id="contact" class="section">
     <h2 class="section-title">Contact Me</h2>
-    <p>Email: bhaveshbhagoria940@gmail.com</p>
-    
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/bhavesh-bhagoria-554713372/">linkedin.com/in/bhavesh-bhagoria-554713372</a></p>
-  </section>
 
+
+<p>
+  Email: bhaveshbhagoria940@gmail.com
+</p>
+
+<p>
+  LinkedIn:
+  <a href="https://www.linkedin.com/in/bhavesh-bhagoria-554713372/">
+    linkedin.com/in/bhavesh-bhagoria-554713372
+  </a>
+</p>
+
+
+  </section>
 
 </body>
 </html>
